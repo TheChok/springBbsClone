@@ -1,0 +1,6 @@
+[2022-07-21 03:14:40] [info]  [ 4812] Apache Commons Daemon procrun (1.2.4.0 64-bit) started.
+[2022-07-21 03:14:40] [info]  [ 4812] Running Service 'Tomcat9'...
+[2022-07-21 03:14:40] [info]  [ 5716] Starting service...
+[2022-07-21 03:14:42] [info]  [ 5716] Service started in 1791 milliseconds.
+[2022-07-23 17:54:46] [info]  [ 4812] Run service finished.
+[2022-07-23 17:54:46] [info]  [ 4812] Apache Commons Daemon procrun finished.

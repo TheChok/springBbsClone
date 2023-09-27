@@ -1,0 +1,13 @@
+package com.bbs.domain;
+
+// SearchCondition //
+public class SearchCondition {
+	Integer	page;
+	Integer	pageSize;
+	Integer offset;
+	String 	keyword;
+	String 	option;
+	
+	
+	
+} // End - SearchCondition

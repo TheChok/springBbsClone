@@ -1,0 +1,15 @@
+1695374698886	Move compilation unit
+1695374766981	Rename package 'com.fastcampus.ch4'
+1695374772239	Rename package 'com.fastcampus.ch4.controller'
+1695375373159	Rename package 'com.fastcampus.bbs'
+1695375380367	Rename package 'com.fastcampus.bbs.controller'
+1695377137652	Rename package 'com.bbs.damain'
+1695377145823	Delete element
+1695377186660	Delete element
+1695433340397	Rename resource 'board.xml'
+1695434079763	Delete element
+1695435367683	Rename type 'BoardDao'
+1695435523898	Rename package 'com.fastcampus.ch4'
+1695493258348	Rename compilation unit 'boardService.java'
+1695493387035	Rename type 'BoardDaoImpl'
+1695493519061	Delete elements

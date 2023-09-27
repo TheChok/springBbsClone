@@ -1,0 +1,15 @@
+package com.bbs.dao;
+
+import java.util.List;
+
+import com.bbs.domain.CommentDto;
+
+public interface CommentDao {
+	int insert(CommentDto dto) throws Exception;
+	List<CommentDto> selectAll(Integer bno) throws Exception;
+	CommentDto select(Integer cno) throws Exception;
+	int update(CommentDto dto) throws Exception;
+	int deleteAll(Integer bno);
+	int delete(Integer cno, String commenter) throws Exception;
+    int count(Integer bno) throws Exception;
+}

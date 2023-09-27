@@ -1,0 +1,47 @@
+package com.bbs.domain;
+
+// SearchCondition //
+public class SearchCondition {
+	private Integer	page;
+	private Integer	pageSize;
+	private Integer offset;
+	private String 	keyword;
+	private String 	option;
+	
+	// getter & setter
+	public Integer getPage() {
+		return page;
+	}
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+	public Integer getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Integer getOffset() {
+		return offset;
+	}
+	public void setOffset(Integer offset) {
+		this.offset = offset;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getOption() {
+		return option;
+	}
+	public void setOption(String option) {
+		this.option = option;
+	}
+	
+	
+	
+	
+	
+} // End - SearchCondition

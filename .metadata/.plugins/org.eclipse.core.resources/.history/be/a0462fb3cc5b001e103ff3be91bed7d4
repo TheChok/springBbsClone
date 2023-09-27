@@ -1,0 +1,96 @@
+package com.bbs.domain;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+// PageHandlerTest //
+public class PageHandlerTest {
+	
+	@Test
+	public void test() {
+		// 게시글 목록 경계값 테스트
+		// PageHandler 기본생성자 - 게시글 총 갯수, 목록 번호
+		// 게시글 총 갯수 255 / 10 = 게시글 목록 총 26개, 마지막 26번은 게시글 5개
+
+		// 게시글 목록 1번
+		// 정상 처리 : 목록 시작 번호 1번,마지막 번호 10번 
+		PageHandler ph = new PageHandler(255, 1);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 1);
+		assertTrue(ph.getEndPage() == 10);
+		
+		// 게시글 목록 6번
+		// 정상 처리 : 목록 시작 번호 1번,마지막 번호 10번 
+		ph = new PageHandler(255, 6);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 1);
+		assertTrue(ph.getEndPage() == 10);
+		
+		// 게시글 목록 10번
+		// 정상 처리 : 목록 시작 번호 1번,마지막 번호 10번 
+		ph = new PageHandler(255, 10);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 1);
+		assertTrue(ph.getEndPage() == 10);
+		System.out.println();
+		
+		
+		
+		// 게시글 목록 11번
+		// 정상 처리 : 목록 시작 번호 11번, 마지막 번호 20번
+		ph = new PageHandler(255, 11);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 11);
+		assertTrue(ph.getEndPage() == 20);
+		
+		// 게시글 목록 15번
+		// 정상 처리 : 목록 시작 번호 11번, 마지막 번호 20번
+		ph = new PageHandler(255, 15);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 11);
+		assertTrue(ph.getEndPage() == 20);
+		
+		// 게시글 목록 20번
+		// 정상 처리 : 목록 시작 번호 11번, 마지막 번호 20번
+		ph = new PageHandler(255, 20);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 11);
+		assertTrue(ph.getEndPage() == 20);
+		System.out.println();
+		
+		
+		
+		// 게시글 목록 21번
+		// 정상 처리 : 목록 시작 번호 21번, 마지막 번호 26번
+		ph = new PageHandler(255, 21);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 21);
+		assertTrue(ph.getEndPage() == 26);
+		
+		// 게시글 목록 25번
+		// 정상 처리 : 목록 시작 번호 21번, 마지막 번호 26번
+		ph = new PageHandler(255, 25);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 21);
+		assertTrue(ph.getEndPage() == 26);
+		
+		// 게시글 목록 26번
+		// 정상 처리 : 목록 시작 번호 21번, 마지막 번호 26번
+		ph = new PageHandler(255, 26);
+		ph.print2();
+		System.out.println("ph = " + ph);
+		assertTrue(ph.getBeginPage() == 21);
+		assertTrue(ph.getEndPage() == 26);
+	}
+	
+	
+} // End - PageHandlerTest

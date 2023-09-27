@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bbs.dao.BoardMapper">
+	<!-- count -->
+	<select id="count" resultType="int">
+        SELECT count(*) FROM board
+    </select>
+
+	<!-- deleteAll -->
+    <delete id="deleteAll">
+        DELETE FROM board
+    </delete>
+
+	<!-- deleteForAdmin -->
+    <delete id="deleteForAdmin" parameterType="map">
+        DELETE FROM board WHERE bno = #{bno}
+    </delete>
+
+	<!-- delete -->
+    <delete id="delete" parameterType="map">
+        DELETE FROM board WHERE bno = #{bno} AND writer = #{writer}
+    </delete>
+
+	<!-- insert -->
+    <insert id="insert" parameterType="BoardDto">
+        INSERT INTO board(title, content, writer) VALUES(#{title}, #{content}, #{writer})
+    </insert>
+
+	<!-- selectAll -->
+    <select id="selectAll" resultType="BoardDto">
+        SELECT 	bno, title, content, writer, view_cnt, comment_cnt, reg_date
+          FROM 	board
+        ORDER BY reg_date DESC, bno DESC
+    </select>
+
+	<!-- selectFromBaord -->
+    <sql id="selectFromBoard">
+        SELECT 	bno, title, content, writer, view_cnt, comment_cnt, reg_date
+          FROM 	board
+    </sql>
+
+	<!-- select -->
+    <select id="select" parameterType="int" resultType="BoardDto">
+        <include refid="selectFromBoard"/>
+        WHERE bno = #{bno}
+    </select>
+
+	<!-- selectPage -->
+    <select id="selectPage" parameterType="map" resultType="BoardDto">
+        <include refid="selectFromBoard"/>
+        ORDER BY reg_date DESC, bno DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+	<!-- update -->
+    <update id="update" parameterType="BoardDto">
+        UPDATE	board
+           SET	title 	= #{title}, 
+           		content = #{content}, 
+           		up_date = now()
+         WHERE 	bno 	= #{bno}
+           AND	writer	= #{writer}
+    </update>
+
+	<!-- updateCommentCnt -->
+    <update id="updateCommentCnt" parameterType="map">
+        UPDATE	board
+           SET 	comment_cnt = comment_cnt + #{cnt}
+         WHERE 	bno 		= #{bno}
+    </update>
+
+	<!-- increaseViewCnt -->
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE	board
+           SET	view_cnt = view_cnt + 1
+         WHERE	bno 	 = #{bno}
+    </update>
+
+	<!-- searchSelectPage -->
+    <select id="searchSelectPage" parameterType="SearchCondition" resultType="BoardDto">
+        SELECT 	bno, title, content, writer, view_cnt, comment_cnt, reg_date
+          FROM 	board
+         WHERE 	1=1
+          <choose>
+            <when test='option=="T"'>
+                AND title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="W"'>
+                AND writer LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                AND (title   LIKE concat('%', #{keyword}, '%')
+                OR   content LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+        ORDER BY reg_date DESC, bno DESC
+         LIMIT 	#{offset}, #{pageSize}
+    </select>
+
+	<!-- searchResultCnt -->
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT 	count(*)
+          FROM 	board
+         WHERE 	true
+           AND 	title like concat('%', #{keyword}, '%')
+    </select>
+
+</mapper>

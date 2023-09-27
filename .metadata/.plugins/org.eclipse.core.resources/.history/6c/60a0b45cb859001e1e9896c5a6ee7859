@@ -1,0 +1,10 @@
+package com.bbs.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.bbs.domain.BoardDto;
+
+@Repository
+public interface BoardDao {
+	BoardDto select(int bno) throws Exception;
+}

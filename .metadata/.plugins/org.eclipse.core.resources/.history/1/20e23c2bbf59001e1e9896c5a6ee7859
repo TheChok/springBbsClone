@@ -1,0 +1,23 @@
+package com.bbs.dao;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bbs.domain.BoardDto;
+
+@Repository
+public class BoardDaoImpl implements BoardDao {
+    @Autowired
+    private SqlSession session;
+    private static String namespace = "com.bbs.BoardMapper.";
+
+    public BoardDto select(Integer bno) throws Exception {
+    	return session.selectOne(namespace + "select", bno);
+    };
+    
+}
